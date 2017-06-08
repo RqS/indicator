@@ -25,3 +25,9 @@ def extract_crftokens(text, options=None, lowercase):
 def extract_tokens_from_crf(crf_tokens):
         return [tk['value'] for tk in crf_tokens]
 
+#given a string, split this string into many line according to new line symbol
+def split_line(str):
+    line_list = []
+    str = str.strip()
+    list = str.split('\n')
+    return list
