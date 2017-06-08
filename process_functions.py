@@ -28,13 +28,14 @@ def extract_tokens_from_crf(crf_tokens):
         return [tk['value'] for tk in crf_tokens]
 
 #given a string, split this string into many line according to new line symbol
-def split_line(str):
+def split_line(s):
     line_list = []
-    str = str.strip()
-    str_result = str.translate(string.maketrans("", ""), string.punctuation)
-    list = str_result.split('\n')
-    for i in list:
-        if len(i.split()) <= _LEAST_LEN:
-            list.remove(i)
-    return list
+    s = s.strip()
+    str_result = s.translate(string.maketrans("",""), string.punctuation)
+    lst = [x.strip() for x in str_result.split('\n') if x!=' ']
+    result=[]
+    for i in lst:
+        if len(i.split()) > _LEAST_LEN:
+            result.append(i)
+    return result
 
