@@ -2,28 +2,26 @@
 import json
 import string
 import codecs
-
-
+from tokenizer_extractor import TokenizerExtractor
 
 #text_part is what you want to extract from text, like: content_strict, content_relaxed or title
 def process_text(input_file, text_part):
     with codecs.open(input_file, 'r', 'utf-8') as f:
-        content_strict = []
-        content_relaxed = []
-        title = []
-
-        for index, line in enumerate(f):
-            doc = json.loads(line)
-            content = doc['content_extraction']
-            content_strict.append(content['content_strict']['text'])
-            content_relaxed.append(content['content_relaxed']['text'])
-            title.append(content['title']['text'])
-        if text_part == 'content_strict':
-            return content_strict
-        elif text_part == 'content_relaxed':
-            return content_relaxed
-        elif text_part == 'title':
-            return title
-        else:
+        content_result = []
+        text_type=['content_strict', 'content_relaxed', 'title']
+        if text_part not in text_type:
             return "No match"
+        else:
+            for index, line in enumerate(f):
+                doc = json.loads(line)
+                content = doc['content_extraction']
+                content_result.append(content[text_part]['text'])
+            return content_result
+
+def extract_crftokens(text, options=None, lowercase):
+        t = TokenizerExtractor(recognize_linebreaks=True, create_structured_tokens=True)
+        return t.extract(text, lowercase)
+
+def extract_tokens_from_crf(crf_tokens):
+        return [tk['value'] for tk in crf_tokens]
 
