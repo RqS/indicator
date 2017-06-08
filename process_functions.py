@@ -20,7 +20,7 @@ def process_text(input_file, text_part):
                 content_result.append(content[text_part]['text'])
             return content_result
 
-def extract_crftokens(text, options=None, lowercase):
+def extract_crftokens(text, options=None, lowercase=False):
         t = TokenizerExtractor(recognize_linebreaks=True, create_structured_tokens=True)
         return t.extract(text, lowercase)
 
