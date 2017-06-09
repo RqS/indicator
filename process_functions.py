@@ -4,8 +4,7 @@ import string
 import codecs
 from tokenizer_extractor import TokenizerExtractor
 
-
-_LEAST_LEN = 5
+_LEAST_LEN = 3
 #text_part is what you want to extract from text, like: content_strict, content_relaxed or title
 def process_text(input_file, text_part):
     with codecs.open(input_file, 'r', 'utf-8') as f:
@@ -29,13 +28,18 @@ def extract_tokens_from_crf(crf_tokens):
 
 #given a string, split this string into many line according to new line symbol
 def split_line(s):
-    line_list = []
-    s = s.strip()
-    str_result = s.translate(string.maketrans("",""), string.punctuation)
+    str_result = s.strip().translate(string.maketrans("",""), string.punctuation)
     lst = [x.strip() for x in str_result.split('\n') if x!=' ']
     result=[]
     for i in lst:
         if len(i.split()) > _LEAST_LEN:
             result.append(i)
     return result
+
+def prep_nlp(nlp):
+    old_tokenizer = nlp.tokenizer
+    nlp.tokenizer = lambda tokens: old_tokenizer.tokens_from_list(tokens)
+    return nlp
+
+#def process_extracted()
 
