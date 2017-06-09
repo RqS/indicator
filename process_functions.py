@@ -28,13 +28,10 @@ def extract_tokens_from_crf(crf_tokens):
 
 #given a string, split this string into many line according to new line symbol
 def split_line(s):
-    str_result = s.strip().translate(string.maketrans("",""), string.punctuation)
-    lst = [x.strip() for x in str_result.split('\n') if x!=' ']
-    result=[]
-    for i in lst:
-        if len(i.split()) > _LEAST_LEN:
-            result.append(i)
-    return result
+    if len(s) >= 10:
+        str_result = s.strip().translate(string.maketrans("", ""), string.punctuation)
+        lst = [x.strip() for x in str_result.split('\n') if x != ' ']
+    return lst
 
 def prep_nlp(nlp):
     old_tokenizer = nlp.tokenizer
