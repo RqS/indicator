@@ -5,19 +5,6 @@ import codecs
 from tokenizer_extractor import TokenizerExtractor
 
 _LEAST_LEN = 10
-#text_part is what you want to extract from text, like: content_strict, content_relaxed or title
-def process_text(input_file, text_part):
-    with codecs.open(input_file, 'r', 'utf-8') as f:
-        content_result = []
-        text_type=['content_strict', 'content_relaxed', 'title']
-        if text_part not in text_type:
-            return "No match"
-        else:
-            for index, line in enumerate(f):
-                doc = json.loads(line)
-                content = doc['content_extraction']
-                content_result.append(content[text_part]['text'])
-            return content_result
 
 def extract_crftokens(text, options=None, lowercase=False):
         t = TokenizerExtractor(recognize_linebreaks=True, create_structured_tokens=True)
@@ -42,5 +29,19 @@ def prep_nlp(nlp):
     nlp.tokenizer = lambda tokens: old_tokenizer.tokens_from_list(tokens)
     return nlp
 
-#def process_extracted()
+def process_extracted(extracted_dict):
+    if len(extracted_dict) == 0:
+        return False
+    elif "strong positive" in extracted_dict and "strong negative" not in extracted_dict:
+        return True
+    elif "strong positive" not in extracted_dict and "strong negative" in extracted_dict:
+        return False
+    elif "strong positive" not in extracted_dict and "strong negative" not in extracted_dict:
+        if "positive" in extracted_dict and "negative" not in extracted_dict:
+            return True
+        elif "positive" not in extracted_dict and "negative" in extracted_dict:
+            return False
+    else:
+        return "Unknown"
+
 
