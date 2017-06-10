@@ -181,35 +181,17 @@ def load_movement_matcher(nlp):
 
 def post_process(matches, nlp_doc):
     movement = dict()
+    label_list = ["positive", "strong positive", "negative", "strong negative"]
     for ent_id, label, start, end in matches:
-        movement[str(nlp_doc[start:end])]={'start': start, 'end': end, 'ent_id': ent_id}
+        if label_list[ent_id-1] not in movement:
+            movement[label_list[ent_id-1]] = []
+            movement[label_list[ent_id-1]].append(nlp_doc[start:end])
+        else:
+            movement[label_list[ent_id-1]].append(nlp_doc[start:end])
     return movement
-
-def wrap_value_with_context(movement):
-    label_list=dict()
-    label_list[1]="positive"
-    label_list[2]="strong positive"
-    label_list[3]="negative"
-    label_list[4]="strong negative"
-    result = []
-    for element in movement:
-        this_result = {
-            "context": {
-                "start": movement[element]['start'], 
-                "end": movement[element]['end']
-            },
-            "value": element,
-            "metadata": {
-                "confidence_level": label_list[movement[element]['ent_id']]
-            }
-        }
-        result.append(this_result)
-    return result
-
 
 def extract(nlp_doc, matcher):
     movement_matches = matcher(nlp_doc)
     movement = post_process(movement_matches, nlp_doc)
-    info_extracted = wrap_value_with_context(movement)
 
-    return info_extracted
+    return movement
