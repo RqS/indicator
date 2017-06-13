@@ -3,6 +3,7 @@ import json
 import string
 import codecs
 from tokenizer_extractor import TokenizerExtractor
+#import random
 
 _LEAST_LEN = 10
 
@@ -30,18 +31,35 @@ def prep_nlp(nlp):
     return nlp
 
 def process_extracted(extracted_dict):
-    if len(extracted_dict) == 0:
-        return False
-    elif "strong positive" in extracted_dict and "strong negative" not in extracted_dict:
-        return True
-    elif "strong positive" not in extracted_dict and "strong negative" in extracted_dict:
-        return False
-    elif "strong positive" not in extracted_dict and "strong negative" not in extracted_dict:
-        if "positive" in extracted_dict and "negative" not in extracted_dict:
-            return True
-        elif "positive" not in extracted_dict and "negative" in extracted_dict:
-            return False
+    # if len(extracted_dict) == 0:
+    #     return "FALSE"
+    # elif "strong positive" in extracted_dict and "strong negative" not in extracted_dict:
+    #     return "TRUE"
+    if "strong positive" in extracted_dict or "positive" in extracted_dict:
+        return "TRUE"
+    # elif "strong positive" not in extracted_dict and "strong negative" in extracted_dict:
+    #     return "FALSE"
+    # elif "strong positive" not in extracted_dict and "strong negative" not in extracted_dict:
+        # if "positive" in extracted_dict and "negative" not in extracted_dict:
+        #     return "TRUE"
+        # elif "positive" not in extracted_dict and "negative" in extracted_dict:
+        #     return "FALSE"
+        # else:
+        #     return "UNKNOWN"
     else:
-        return "Unknown"
+        return "FALSE"
+    # else:
+    #     return "UNKNOWN"
 
+# def write_text(f_p, f_n, label, text):
+#    r = random.random()
+#    if r>=0.5:
+    # if label=="TRUE":
+    #     # for i in range(100):
+    #     f_p.write("__label__%s %s\n" % (label, text))
+    # else:
+    #     f_n.write("__label__%s %s\n" % (label, text))
+    # else:
+    #     f_test_text.write("%s\n" % text)
+    #     f_test_label.write("%s\n" % label)
 
