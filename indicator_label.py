@@ -52,7 +52,7 @@ with open(input_file, 'r') as f:
             #this_label[incall] = pf.process_extracted(incall)
             if this_label == "TRUE":
                 #p_num = p_num + 1
-                positive_f.write("__label__%s %s\n" % (this_label, sentence))
+                positive_f.write("__label__%s %s" % (this_label, sentence))
                 #r = random.random()
                 #if r <= 0.5:
                 #    train_f.write("__label__%s %s\n" % (this_label, sentence))
@@ -60,7 +60,7 @@ with open(input_file, 'r') as f:
                 #    test_f.write("__label__%s %s\n" % (this_label, sentence))
             else:
                 #n_num = n_num + 1
-                negative_f.write("__label__%s %s\n" % (this_label, sentence))
+                negative_f.write("__label__%s %s" % (this_label, sentence))
             #pf.write_text(positive_f, negative_f, this_label, sentence)
             # this_result = {
             #     "label": this_label,
