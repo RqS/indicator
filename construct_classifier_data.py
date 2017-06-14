@@ -15,7 +15,7 @@ train_data = sys.argv[3]
 negative_f = open(neg_file, 'r')
 
 copyfile(pos_file, train_data)
-train_f = open(train_data, 'w')
+train_f = open(train_data, 'a')
 
 for line in negative_f:
 	r = random.random()
