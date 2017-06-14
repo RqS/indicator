@@ -14,7 +14,7 @@ train_data = sys.argv[3]
 
 negative_f = open(neg_file, 'r')
 
-copyfile(positive_f, train_data)
+copyfile(pos_file, train_data)
 train_f = open(train_data, 'w')
 
 for line in negative_f:
