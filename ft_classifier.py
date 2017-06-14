@@ -13,3 +13,10 @@ train_f = open(training_data, 'w')
 
 test_text, test_label = pf.generate_train_and_test(data_f, train_f)
 
+data_f.close()
+train_f.close()
+
+for epoch in range(21)[4:]:
+	classifier = fasttext.supervised(train_f, 'movement_classify_model',
+				dim=200, word_ngrams=2, lr=0.2, epoch=epoch)
+
