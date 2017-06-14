@@ -5,8 +5,8 @@ import process_functions as pf
 import spacy
 import movement_extractor
 #import incall_extractor
-import fasttext
-import random
+#import fasttext
+#import random
 
 #input_file = '/Users/runqishao/Downloads/eccie_1000_content_result.jl'
 #text_part = 'content_relaxed'
@@ -16,8 +16,8 @@ input_file = sys.argv[1]
 #text_part = sys.argv[2]
 positive_text = sys.argv[2]
 negative_text = sys.argv[3]
-train_text = sys.argv[4]
-test_text = sys.argv[5]
+#train_text = sys.argv[4]
+#test_text = sys.argv[5]
 #text_for_vector = sys.argv[6]
 
 nlp = spacy.load('en')
@@ -29,17 +29,17 @@ nlp = pf.prep_nlp(nlp)
 #train_output = open(output_for_train, 'w')
 positive_f = open(positive_text, 'w')
 negative_f = open(negative_text, 'w')
-train_f = open(train_text, 'w')
-test_f = open(test_text, 'w')
+#train_f = open(train_text, 'w')
+#test_f = open(test_text, 'w')
 #vector_text = open(text_for_vector, 'w')
 
 #text_type=['content_strict', 'content_relaxed', 'title']
 #total=0
-p_num = 0
-n_num = 0
+#p_num = 0
+#n_num = 0
 with open(input_file, 'r') as f:
     for index, line in enumerate(f):
-        if index % 1000 == 0:
+        if index % 10000 == 0:
             print "process line no.%d" %index
         content_doc = pf.split_line(line)
         for sentence in content_doc:
@@ -51,15 +51,15 @@ with open(input_file, 'r') as f:
             #this_label[movement] = pf.process_extracted(movement)
             #this_label[incall] = pf.process_extracted(incall)
             if this_label == "TRUE":
-                p_num = p_num + 1
+                #p_num = p_num + 1
                 positive_f.write("__label__%s %s\n" % (this_label, sentence))
-                r = random.random()
-                if r <= 0.5:
-                    train_f.write("__label__%s %s\n" % (this_label, sentence))
-                else:
-                    test_f.write("__label__%s %s\n" % (this_label, sentence))
+                #r = random.random()
+                #if r <= 0.5:
+                #    train_f.write("__label__%s %s\n" % (this_label, sentence))
+                #else:
+                #    test_f.write("__label__%s %s\n" % (this_label, sentence))
             else:
-                n_num = n_num + 1
+                #n_num = n_num + 1
                 negative_f.write("__label__%s %s\n" % (this_label, sentence))
             #pf.write_text(positive_f, negative_f, this_label, sentence)
             # this_result = {
@@ -77,21 +77,21 @@ with open(input_file, 'r') as f:
 positive_f.close()
 negative_f.close()
 
-sample_idx = sorted(random.sample(range(n_num), p_num))
-p = 0
+# sample_idx = sorted(random.sample(range(n_num), p_num))
+# p = 0
 
-with open(negative_text, 'r') as f:
-    for index, line in enumerate(f):
-        if p < p_num and index ==  sample_idx[p]:
-            r = random.random()
-            if r <= 0.5:
-                train_f.write("%s\n" % line)
-            else:
-                test_f.write("%s\n" % line)
-            p = p + 1
+# with open(negative_text, 'r') as f:
+#     for index, line in enumerate(f):
+#         if p < p_num and index ==  sample_idx[p]:
+#             r = random.random()
+#             if r <= 0.5:
+#                 train_f.write("%s\n" % line)
+#             else:
+#                 test_f.write("%s\n" % line)
+#             p = p + 1
 
-train_f.close()
-test_f.close()
+# train_f.close()
+# test_f.close()
 #vector_text.close()
 
 # vector_model = fasttext.skipgram('text/movement_text_vector.txt', 
