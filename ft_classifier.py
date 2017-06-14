@@ -1,6 +1,7 @@
 import sys
 import random
 import fasttext
+import process_functions as pf
 
 data = sys.argv[1]
 training_data = sys.argv[2]
@@ -10,5 +11,5 @@ training_data = sys.argv[2]
 data_f = open(data, 'r')
 train_f = open(training_data, 'w')
 
-test_text, test_label = generate_train_and_test(data_f, train_f)
+test_text, test_label = pf.generate_train_and_test(data_f, train_f)
 
