@@ -3,8 +3,6 @@ import random
 
 from shutil import copyfile
 
-copyfile(src, dst)
-
 pos_line = 7454
 neg_line = 16651219
 p = pos_line / float(neg_line)
