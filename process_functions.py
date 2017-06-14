@@ -3,7 +3,7 @@ import json
 import string
 import codecs
 from tokenizer_extractor import TokenizerExtractor
-#import random
+import random
 
 _LEAST_LEN = 10
 
