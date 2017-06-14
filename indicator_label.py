@@ -17,6 +17,7 @@ input_file = sys.argv[1]
 positive_text = sys.argv[2]
 negative_text = sys.argv[3]
 train_text = sys.argv[4]
+test_text = sys.argv[5]
 #text_for_vector = sys.argv[6]
 
 nlp = spacy.load('en')
@@ -29,6 +30,7 @@ nlp = pf.prep_nlp(nlp)
 positive_f = open(positive_text, 'w')
 negative_f = open(negative_text, 'w')
 train_f = open(train_text, 'w')
+test_f = open(test_text, 'w')
 #vector_text = open(text_for_vector, 'w')
 
 #text_type=['content_strict', 'content_relaxed', 'title']
@@ -51,7 +53,11 @@ with open(input_file, 'r') as f:
             if this_label == "TRUE":
                 p_num = p_num + 1
                 positive_f.write("__label__%s %s\n" % (this_label, sentence))
-                train_f.write("__label__%s %s\n" % (this_label, sentence))
+                r = random.random()
+                if r <= 0.5:
+                    train_f.write("__label__%s %s\n" % (this_label, sentence))
+                else:
+                    test_f.write("__label__%s %s\n" % (this_label, sentence))
             else:
                 n_num = n_num + 1
                 negative_f.write("__label__%s %s\n" % (this_label, sentence))
@@ -77,10 +83,15 @@ p = 0
 with open(negative_text, 'r') as f:
     for index, line in enumerate(f):
         if p < p_num and index ==  sample_idx[p]:
-            train_f.write("%s\n" % line)
+            r = random.random()
+            if r <= 0.5:
+                train_f.write("%s\n" % line)
+            else:
+                test_f.write("%s\n" % line)
             p = p + 1
 
 train_f.close()
+test_f.close()
 #vector_text.close()
 
 # vector_model = fasttext.skipgram('text/movement_text_vector.txt', 
