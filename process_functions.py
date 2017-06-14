@@ -63,3 +63,15 @@ def process_extracted(extracted_dict):
     #     f_test_text.write("%s\n" % text)
     #     f_test_label.write("%s\n" % label)
 
+def generate_train_and_test(f, train_f):
+    texts = []
+    labels = []
+    for line in f:
+        r = random.random()
+        if r <= 0.25:
+            texts.append(line.strip().split(' ', 1)[1])
+            labels.append(line.strip().split(' ', 1)[0].split('__')[-1])
+        else:
+            train_f.write("%s" % line)
+    return [texts, labels]
+
