@@ -38,29 +38,29 @@ negative_f = open(negative_text, 'w')
 #p_num = 0
 #n_num = 0
 with open(input_file, 'r') as f:
-    for index, line in enumerate(f):
+    for index, sentence in enumerate(f):
         if index % 10000 == 0:
             print "process line no.%d" %index
-        content_doc = pf.split_line(line)
-        for sentence in content_doc:
-            t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
-            t_simple_tokens = pf.extract_tokens_from_crf(t)
-            movement = movement_extractor.extract(nlp(t_simple_tokens), movement_matcher)
-            #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
-            this_label = pf.process_extracted(movement)
-            #this_label[movement] = pf.process_extracted(movement)
-            #this_label[incall] = pf.process_extracted(incall)
-            if this_label == "TRUE":
-                #p_num = p_num + 1
-                positive_f.write("__label__%s %s\n" % (this_label, sentence))
-                #r = random.random()
-                #if r <= 0.5:
-                #    train_f.write("__label__%s %s\n" % (this_label, sentence))
-                #else:
-                #    test_f.write("__label__%s %s\n" % (this_label, sentence))
-            else:
-                #n_num = n_num + 1
-                negative_f.write("__label__%s %s\n" % (this_label, sentence))
+        #content_doc = pf.split_line(line)
+        #for sentence in content_doc:
+        t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
+        t_simple_tokens = pf.extract_tokens_from_crf(t)
+        movement = movement_extractor.extract(nlp(t_simple_tokens), movement_matcher)
+        #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
+        this_label = pf.process_extracted(movement)
+        #this_label[movement] = pf.process_extracted(movement)
+        #this_label[incall] = pf.process_extracted(incall)
+        if this_label == "TRUE":
+            #p_num = p_num + 1
+            positive_f.write("__label__%s %s" % (this_label, sentence))
+            #r = random.random()
+            #if r <= 0.5:
+            #    train_f.write("__label__%s %s\n" % (this_label, sentence))
+            #else:
+            #    test_f.write("__label__%s %s\n" % (this_label, sentence))
+        else:
+            #n_num = n_num + 1
+            negative_f.write("__label__%s %s" % (this_label, sentence))
             #pf.write_text(positive_f, negative_f, this_label, sentence)
             # this_result = {
             #     "label": this_label,
