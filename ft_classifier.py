@@ -65,5 +65,6 @@ for epoch in range(4, 21, 2):
 			}
 
 			json.dump(this_result, result_f)
+			result_f.write("\n")
 
 
