@@ -3,8 +3,8 @@ import random
 
 from shutil import copyfile
 
-pos_line = 7454
-neg_line = 16651219
+pos_line = 8778
+neg_line = 23089366
 p = pos_line / float(neg_line)
 
 pos_file = sys.argv[1]
