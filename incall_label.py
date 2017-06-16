@@ -1,7 +1,7 @@
 import sys
 import codecs
 import json
-import process_functions as pf
+import process_functions_with_neg as pf
 import spacy
 import incall_extractor
 
