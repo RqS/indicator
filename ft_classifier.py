@@ -9,11 +9,12 @@ import numpy
 data = sys.argv[1]
 training_data = sys.argv[2]
 result_data = sys.argv[3]
-
+true_false = sys.argv[4]
 
 data_f = open(data, 'r')   #dataset containing training and test datasets
 train_f = open(training_data, 'w')  # save as trainging datasets
 result_f = codecs.open(result_data, 'w', 'utf-8')  #save as test prediction result
+true_false_f = open(true_false, 'w')
 
 test_text, test_label = pf.generate_train_and_test(data_f, train_f)
 
@@ -35,12 +36,14 @@ for epoch in range(4, 21, 1):
                         t_f = 0
                         f_t = 0
                         f_f = 0
-                        
+                        k = 0
 			for i in range(len(predict_labels)):
 				if test_label[i] == 'TRUE' and predict_labels[i][0].encode('utf-8') == 'TRUE':
                                         t_t += 1
                                 elif test_label[i] == 'TRUE' and predict_labels[i][0].encode('utf-8') == 'FALSE':
                                         t_f += 1
+                                        k += 1
+                                        true_false_f.write("%d. %s\n" %(k, test_text[i]) )
                                 elif test_label[i] == 'FALSE' and predict_labels[i][0].encode('utf-8') == 'TRUE':
                                         f_t += 1
                                 elif test_label[i] == 'FALSE' and predict_labels[i][0].encode('utf-8') == 'FALSE':
@@ -65,6 +68,6 @@ for epoch in range(4, 21, 1):
 
 			json.dump(this_result, result_f)
 			result_f.write("\n")
-
+true_false_f.close()
 result_f.close()
 
