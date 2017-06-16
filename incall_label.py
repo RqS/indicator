@@ -1,7 +1,5 @@
 import sys
-import codecs
-import json
-import process_functions_with_neg as pf
+import process_functions as pf
 import spacy
 import incall_extractor
 
@@ -11,10 +9,16 @@ negative_text = sys.argv[3]
 
 nlp = spacy.load('en')
 incall_matcher = incall_extractor.load_incall_matcher(nlp)
+#incall_matcher = incall_extractor.load_incall_matcher(nlp)
 nlp = pf.prep_nlp(nlp)
 
 positive_f = open(positive_text, 'w')
 negative_f = open(negative_text, 'w')
+sp_sn_f = open(sys.argv[4], 'w')
+sp_n_f = open(sys.argv[5], 'w')
+sn_p_f = open(sys.argv[6], 'w')
+p_n_f = open(sys.argv[7], 'w')
+ne_f = open(sys.argv[8], 'w')
 
 with open(input_file, 'r') as f:
     for index, sentence in enumerate(f):
@@ -23,13 +27,27 @@ with open(input_file, 'r') as f:
         t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
         t_simple_tokens = pf.extract_tokens_from_crf(t)
         incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
-        this_label = pf.process_extracted(incall)
-        if this_label == "TRUE":
-            positive_f.write("__label__%s %s" % (this_label, sentence))
-        else:
-            negative_f.write("__label__%s %s" % (this_label, sentence))
+        #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
+        label = pf.process_extracted(incall)
+        if label == "NE":
+            ne_f.write(sentence)
+        elif label == "ONLY_P":
+            positive_f.write(sentence)
+        elif label == "ONLY_N":
+            negative_f.write(sentence)
+        elif label == "SP_SN":
+            sp_sn_f.write(sentence)
+        elif label == "SP_N":
+            sp_n_f.write(sentence)
+        elif label == "SN_P":
+            sn_p_f.write(sentence)
+        elif label == "ONLY_P_N":
+            p_n_f.write(sentence)
 
 positive_f.close()
 negative_f.close()
-
-
+sp_sn_f.close()
+sp_n_f.close()
+sn_p_f.close()
+p_n_f.close()
+ne_f.close()
