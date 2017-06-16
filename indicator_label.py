@@ -3,8 +3,8 @@ import codecs
 import json
 import process_functions as pf
 import spacy
-import movement_extractor
-#import incall_extractor
+#import movement_extractor
+import incall_extractor
 #import fasttext
 #import random
 
@@ -21,8 +21,8 @@ negative_text = sys.argv[3]
 #text_for_vector = sys.argv[6]
 
 nlp = spacy.load('en')
-movement_matcher = movement_extractor.load_movement_matcher(nlp)
-#incall_matcher = incall_extractor.load_movement_matcher(nlp)
+#movement_matcher = movement_extractor.load_movement_matcher(nlp)
+incall_matcher = incall_extractor.load_incall_matcher(nlp)
 nlp = pf.prep_nlp(nlp)
 
 #output = codecs.open(output_file, 'w', 'utf-8')
@@ -45,9 +45,9 @@ with open(input_file, 'r') as f:
         #for sentence in content_doc:
         t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
         t_simple_tokens = pf.extract_tokens_from_crf(t)
-        movement = movement_extractor.extract(nlp(t_simple_tokens), movement_matcher)
-        #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
-        this_label = pf.process_extracted(movement)
+        #movement = movement_extractor.extract(nlp(t_simple_tokens), movement_matcher)
+        incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
+        this_label = pf.process_extracted(incall)
         #this_label[movement] = pf.process_extracted(movement)
         #this_label[incall] = pf.process_extracted(incall)
         if this_label == "TRUE":
