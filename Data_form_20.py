@@ -8,38 +8,38 @@ total_data_f = open("dataset_20.txt", 'w')
 
 
 for i in range(20):
-    neg_lines = open('incall_neg.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_neg.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_sn_p.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_sn_p.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_pos.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_pos.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_sp_n.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_sp_n.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_p_n.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_p_n.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_sp_sn.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_sp_sn.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_ne.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_ne.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
