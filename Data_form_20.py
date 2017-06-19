@@ -14,7 +14,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
@@ -26,7 +26,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
@@ -38,7 +38,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
@@ -52,7 +52,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
@@ -64,7 +64,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
@@ -77,7 +77,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
@@ -90,7 +90,7 @@ for i in range(200):
     if myline not in lst:
         total_data_f.write("%d.%s\n" %(i,myline))
         k += 1
-        lst_1.append(myline)
+        lst.append(myline)
         if k == 20:
             break
 
