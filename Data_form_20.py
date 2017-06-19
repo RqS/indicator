@@ -8,7 +8,7 @@ total_data_f = open("dataset_20.txt", 'w')
 
 
 for i in range(20):
-    neg_lines = open('~/dig_indicator/data/incall_data/incall_neg.txt').read().splitlines()
+    neg_lines = open('incall_neg.txt').read().splitlines()
     myline =random.choice(neg_lines)
     total_data_f.write("%s\n" % myline)
 
