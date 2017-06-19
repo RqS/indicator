@@ -97,7 +97,7 @@ for i in range(200):
         
 test_lst = random.shuffle(test_lst)
 for i in test_lst:
-    total_data_f.write("%s\n" % i)
+    total_data_f.write("%s\n" % str(i))
     
 total_data_f.close()
 
