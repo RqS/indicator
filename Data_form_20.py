@@ -8,7 +8,7 @@ total_data_f = open("dataset_20.txt", 'w')
 
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_neg.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
@@ -20,7 +20,7 @@ for i in range(200):
 
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_sn_p.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
@@ -32,7 +32,7 @@ for i in range(200):
 
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_pos.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
@@ -46,7 +46,7 @@ for i in range(200):
 
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_sp_n.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
@@ -58,7 +58,7 @@ for i in range(200):
 
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_p_n.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
@@ -71,7 +71,7 @@ for i in range(200):
     
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_sp_sn.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
@@ -84,7 +84,7 @@ for i in range(200):
 
 lst = []
 k = 0
-for i in range(200):
+for i in range(2000000000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_ne.txt').read().splitlines()
     myline =random.choice(neg_lines)
     if myline not in lst:
