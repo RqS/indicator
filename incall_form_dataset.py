@@ -32,7 +32,7 @@ data_sp_n.close()
 data_sn_p.close()
 
 
-total_data_f = open("/home/ubuntu/dig_indicator/data/form_dataset.txt", 'w')
+total_data_f = open("form_dataset.txt", 'w')
 
 
 lst = []
