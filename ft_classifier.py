@@ -32,18 +32,19 @@ TN = 0
 k = 0
 j = 0
 for i in range(len(predict_labels)):
-if test_label[i] == 'TRUE' and predict_labels[i][0].encode('utf-8') == 'TRUE':
-        TP += 1
-elif test_label[i] == 'TRUE' and predict_labels[i][0].encode('utf-8') == 'FALSE':
-        FN += 1
-        k += 1
-        true_false_f.write("%d. %s\n" %(k, test_text[i]) )
-elif test_label[i] == 'FALSE' and predict_labels[i][0].encode('utf-8') == 'TRUE':
-        FP += 1
-        j += 1
-        false_true_f.write("%d. %s\n" %(j, test_text[i]) )
-elif test_label[i] == 'FALSE' and predict_labels[i][0].encode('utf-8') == 'FALSE':
-        TN += 1 
+        if test_label[i] == 'TRUE' and predict_labels[i][0].encode('utf-8') == 'TRUE':
+                TP += 1
+        elif test_label[i] == 'TRUE' and predict_labels[i][0].encode('utf-8') == 'FALSE':
+                FN += 1
+                k += 1
+                true_false_f.write("%d. %s\n" %(k, test_text[i]) )
+        elif test_label[i] == 'FALSE' and predict_labels[i][0].encode('utf-8') == 'TRUE':
+                FP += 1
+                j += 1
+                false_true_f.write("%d. %s\n" %(j, test_text[i]) )
+        elif test_label[i] == 'FALSE' and predict_labels[i][0].encode('utf-8') == 'FALSE':
+                TN += 1
+
 this_result = {
         "stats": {
                 "TP": TP,
