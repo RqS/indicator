@@ -32,13 +32,13 @@ data_sp_n.close()
 data_sn_p.close()
 
 
-total_data_f = open("/home/ubuntu/dig_indicator/data/incall_data/dataset_neg.txt", 'w')
+total_data_f = open("dataset.txt", 'w')
 
 
 lst = []
 k = 0
 for i in range(80000):
-    neg_lines = open('test_140.txt').read().splitlines()
+    neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_neg.txt').read().splitlines()
     myline = random.choice(neg_lines)
     if myline not in lst:
         dataset.append('__label__FALSE'+' '+myline)
