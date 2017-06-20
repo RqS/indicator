@@ -34,13 +34,15 @@ data_sn_p.close()
 
 total_data_f = open("form_dataset.txt", 'w')
 
-
-
+       
+lst = []
 for i in range(70000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/incall_data/incall_neg.txt').read().splitlines()
     myline = random.choice(neg_lines)
-    dataset.append('__label__FALSE'+' '+myline)
-    print i
+    if myline not in lst:
+        dataset.append('__label__FALSE'+' '+myline)
+        lst.append(myline)
+        print i
 
 
 random.shuffle(dataset)
