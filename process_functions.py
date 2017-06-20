@@ -52,7 +52,7 @@ def generate_train_and_test(f, train_f):
     labels = []
     for line in f:
         r = random.random()
-        if r <= 0.25:
+        if r <= 0.1:
             texts.append(line.strip().split(' ', 1)[1])
             labels.append(line.strip().split(' ', 1)[0].split('__')[-1])
         else:
