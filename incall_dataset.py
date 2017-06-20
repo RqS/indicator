@@ -44,6 +44,7 @@ for i in range(80000):
         dataset.append('__label__FALSE'+' '+myline)
         k += 1
         lst.append(myline)
+        print k
         if k ==70000:
             break
 
@@ -51,6 +52,6 @@ random.shuffle(dataset)
 
 for i in dataset:
     total_data_f.write("%s" % i)
-
+print "Positive:", len(dataset)-75571
 total_data_f.close()
 
