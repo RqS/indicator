@@ -10,9 +10,9 @@ import sys
 #data_sn_p = open("dataset_20.txt", 'r')
 
 
-data_pos = open("incall_pos.txt", 'r')
-data_sp_n = open("incall_sp_n.txt", 'r')
-data_sn_p = open("incall_sn_p.txt", 'r')
+data_pos = open("/home/ubuntu/dig_indicator/data/incall_data/incall_pos.txt", 'r')
+data_sp_n = open("/home/ubuntu/dig_indicator/data/incall_data/incall_sp_n.txt", 'r')
+data_sn_p = open("/home/ubuntu/dig_indicator/data/incall_data/incall_sn_p.txt", 'r')
 
 
 
@@ -32,7 +32,7 @@ data_sp_n.close()
 data_sn_p.close()
 
 
-total_data_f = open("dataset_neg.txt", 'w')
+total_data_f = open("/home/ubuntu/dig_indicator/data/incall_data/dataset_neg.txt", 'w')
 
 
 lst = []
