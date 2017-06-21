@@ -8,8 +8,19 @@ import sys
 data_pos = open("/home/ubuntu/dig_indicator/data/incall_data/incall_pos.txt", 'r')
 data_sp_n = open("/home/ubuntu/dig_indicator/data/incall_data/incall_sp_n.txt", 'r')
 data_sn_p = open("/home/ubuntu/dig_indicator/data/incall_data/incall_sn_p.txt", 'r')
-data_ne = open("/home/ubuntu/dig_indicator/data/incall_data/incall_ne.txt", 'r')
 
+
+
+
+
+
+
+'''
+data_pos = open("/home/ubuntu/dig_indicator/data/incall_data/incall_pos.txt", 'r')
+data_sp_n = open("/home/ubuntu/dig_indicator/data/incall_data/incall_sp_n.txt", 'r')
+data_sn_p = open("/home/ubuntu/dig_indicator/data/incall_data/incall_sn_p.txt", 'r')
+data_ne = open("/home/ubuntu/dig_indicator/data/incall_data/incall_ne.txt", 'r')
+'''
 
 dataset = []
 for line in data_pos:
@@ -30,32 +41,33 @@ data_sn_p.close()
 total_data_f = open("form_dataset_expri2.txt", 'w')
 
 
+
 data_neg_f = open('/home/ubuntu/dig_indicator/data/incall_data/incall_neg.txt', 'r')
 data_neg_lst = []
 k = 0
 for line in data_neg_f:
     r = random.random()
     if r <= 0.17936255:
-        k += 1
         data_neg_lst.append(('__label__FALSE'+' '+line).strip()+'\n')
+        k += 1
         print k
 
 
 data_ne_f = open('/home/ubuntu/dig_indicator/data/incall_data/incall_ne.txt', 'r')
 data_ne_lst = []
-j =0
+j = 0
 for line in data_ne_f:
     r = random.random()
     if r <= 0.00087316:
-        j += 1
         data_ne_lst.append(('__label__FALSE'+' '+line).strip()+'\n')
+        j += 1
         print j
-
 
 for i in data_neg_lst:
     dataset.append(i)
 for i in data_ne_lst:
     dataset.append(i)
+print (len(dataset) - 75571)
 
 open('/home/ubuntu/dig_indicator/data/incall_data/incall_neg.txt').close()
 open('/home/ubuntu/dig_indicator/data/incall_data/incall_ne.txt').close()
