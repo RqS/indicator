@@ -73,19 +73,19 @@ with open(input_file, 'r') as f:
         #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
         label = pf.process_extracted(incall)
         if label == "NE":
-            test_140.write("__label__ne ",sentence)
+            test_140.write("__label__ne %s",% sentence)
         elif label == "ONLY_P":
-            test_140.write("__label__pos ",sentence)
+            test_140.write("__label__pos %s",% sentence)
         elif label == "ONLY_N":
-            test_140.write("__label__neg ",sentence)
+            test_140.write("__label__neg %s",% sentence)
         elif label == "SP_SN":
-            test_140.write("__label__sp_sn ",sentence)
+            test_140.write("__label__sp_sn %s",% sentence)
         elif label == "SP_N":
-            test_140.write("__label__sp_n ",sentence)
+            test_140.write("__label__sp_n %s",% sentence)
         elif label == "SN_P":
-            test_140.write("__label__sn_p ",sentence)
+            test_140.write("__label__sn_p %s",% sentence)
         elif label == "ONLY_P_N":
-            test_140.write("__label__p_n ",sentence)
+            test_140.write("__label__p_n %s",% sentence)
             
 sp_sn_f.close()
 test_140.close()
