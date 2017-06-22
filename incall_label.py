@@ -2,7 +2,7 @@ import sys
 import process_functions as pf
 import spacy
 import incall_extractor
-
+'''
 input_file = sys.argv[1]
 positive_text = sys.argv[2]
 negative_text = sys.argv[3]
@@ -51,3 +51,41 @@ sp_n_f.close()
 sn_p_f.close()
 p_n_f.close()
 ne_f.close()
+
+'''
+
+input_file = sys.argv[1]
+sp_sn_f = open(sys.argv[2], 'w')
+test_140 = open(sys.argv[3], 'w')
+nlp = spacy.load('en')
+incall_matcher = incall_extractor.load_incall_matcher(nlp)
+#incall_matcher = incall_extractor.load_incall_matcher(nlp)
+nlp = pf.prep_nlp(nlp)
+
+#for test_140
+with open(input_file, 'r') as f:
+    for index, sentence in enumerate(f):
+        if index % 10000 == 0:
+            print "process line no.%d" %index
+        t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
+        t_simple_tokens = pf.extract_tokens_from_crf(t)
+        incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
+        #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
+        label = pf.process_extracted(incall)
+        if label == "NE":
+            test_140.write("__label__ne ",sentence)
+        elif label == "ONLY_P":
+            test_140.write("__label__pos ",sentence)
+        elif label == "ONLY_N":
+            test_140.write("__label__neg ",sentence)
+        elif label == "SP_SN":
+            test_140.write("__label__sp_sn ",sentence)
+        elif label == "SP_N":
+            test_140.write("__label__sp_n ",sentence)
+        elif label == "SN_P":
+            test_140.write("__label__sn_p ",sentence)
+        elif label == "ONLY_P_N":
+            test_140.write("__label__p_n ",sentence)
+            
+sp_sn_f.close()
+test_140.close()
