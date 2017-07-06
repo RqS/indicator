@@ -59,7 +59,7 @@ input_file = sys.argv[1]
 sp_sn_f = open(sys.argv[2], 'w')
 test_140 = open(sys.argv[3], 'w')
 nlp = spacy.load('en')
-incall_matcher = incall_extractor.load_incall_matcher(nlp)
+movement_matcher = movement_extractor.load_movement_matcher(nlp)
 #incall_matcher = incall_extractor.load_incall_matcher(nlp)
 nlp = pf.prep_nlp(nlp)
 
