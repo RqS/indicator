@@ -71,17 +71,11 @@ for i in range(200):
 
     
 lst = []
-k = 0
-for i in range(20000):
-    neg_lines = open('/home/ubuntu/dig_indicator/data/movement_data/movement_sp_sn.txt').read().splitlines()
-    myline =random.choice(neg_lines)
-    if myline not in lst:
-        test_lst.append(myline)
-        k += 1
-        lst.append(myline)
-        if k == 8:
-            break
 
+neg_lines = open('/home/ubuntu/dig_indicator/data/movement_data/movement_sp_sn.txt').read().splitlines()
+for myline in neg_lines:
+    test_lst.append(myline)
+   
 
 lst = []
 k = 0
