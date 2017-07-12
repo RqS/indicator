@@ -34,19 +34,19 @@ data_sn_p.close()
 
 total_data_f = open("/home/ubuntu/dig_indicator/data/movement_data/movement_experiment/dataset_experi1.txt", 'w')
 
-
+dataset.append(('__label__FALSE'+' '+myline).strip()+'\n')
 lst = []
 k = 0
 for i in range(40000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/movement_data/movement_neg.txt').read().splitlines()
     myline = random.choice(neg_lines)
     if myline not in lst:
-        dataset.append('__label__FALSE'+' '+myline + '\n')
+        dataset.append(('__label__FALSE'+' '+myline).strip()+'\n')
         k += 1
         lst.append(myline)
         print "k:",k
         print "i:",i
-        if k ==100:
+        if k ==7000:
             break
 
 random.shuffle(dataset)
