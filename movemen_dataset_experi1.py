@@ -37,14 +37,15 @@ total_data_f = open("/home/ubuntu/dig_indicator/data/movement_data/movement_expe
 
 lst = []
 k = 0
-for i in range(10000):
+for i in range(40000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/movement_data/movement_neg.txt').read().splitlines()
     myline = random.choice(neg_lines)
     if myline not in lst:
         dataset.append('__label__FALSE'+' '+myline)
         k += 1
         lst.append(myline)
-        print k
+        print "k:",k
+        print "i:",i
         if k ==7000:
             break
 
