@@ -53,7 +53,7 @@ for line in data_neg_f:
         print k
 
 
-data_ne_f = open('/home/ubuntu/dig_indicator/data/outcall_data/outcall_ne.txt', 'r')
+data_ne_f = open('/home/ubuntu/dig_indicator/data/movement_data/movement_ne.txt', 'r')
 data_ne_lst = []
 j = 0
 for line in data_ne_f:
@@ -69,8 +69,8 @@ for i in data_ne_lst:
     dataset.append(i)
 print len(dataset) 
 
-open('/home/ubuntu/dig_indicator/data/outcall_data/outcall_neg.txt').close()
-open('/home/ubuntu/dig_indicator/data/outcall_data/outcall_ne.txt').close()
+open('/home/ubuntu/dig_indicator/data/movement_data/movement_neg.txt').close()
+open('/home/ubuntu/dig_indicator/data/movement_data/movement_ne.txt').close()
 
 random.shuffle(dataset)
 
