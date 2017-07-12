@@ -1,5 +1,5 @@
 from spacy.matcher import Matcher
-from spacy.attrs import LEMMA, IS_ASCII, IS_DIGIT, DEP, FLAG40, FLAG41, ORTH, LEMMA
+from spacy.attrs import LOWER, IS_ASCII, DEP, FLAG40, FLAG41, ORTH, LEMMA
 
 def add_to_vocab(nlp, lst):
     for lexeme in lst:
