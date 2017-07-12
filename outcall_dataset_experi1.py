@@ -26,6 +26,8 @@ print "Positive:",len(dataset)
 
 for line in data_sn_p:
     dataset.append('__label__FALSE'+' '+line)
+    
+print "Positive:",len(dataset)
 
 data_pos.close()
 data_sp_n.close()
@@ -46,7 +48,7 @@ for i in range(300000):
         lst.append(myline)
         print "k:",k
         print "i:",i
-        if k ==23000:
+        if k ==100:
             break
 
 random.shuffle(dataset)
