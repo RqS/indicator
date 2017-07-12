@@ -41,7 +41,7 @@ for i in range(40000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/movement_data/movement_neg.txt').read().splitlines()
     myline = random.choice(neg_lines)
     if myline not in lst:
-        dataset.append('__label__FALSE'+' '+myline)
+        dataset.append('__label__FALSE'+' '+myline + '\n')
         k += 1
         lst.append(myline)
         print "k:",k
