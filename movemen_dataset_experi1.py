@@ -46,10 +46,11 @@ for i in range(40000):
         lst.append(myline)
         print "k:",k
         print "i:",i
-        if k ==7000:
+        if k ==100:
             break
 
 random.shuffle(dataset)
+print "Positive + Neagtive:", len(dataset)
 
 for i in dataset:
     total_data_f.write("%s" % i)
