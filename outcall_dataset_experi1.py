@@ -44,7 +44,8 @@ for i in range(300000):
         dataset.append('__label__FALSE'+' '+myline)
         k += 1
         lst.append(myline)
-        print k
+        print "k:",k
+        print "i:",i
         if k ==23000:
             break
 
