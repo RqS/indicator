@@ -7,7 +7,7 @@ import random
 
 _LEAST_LEN = 10
 
-def extract_crftokens(text, options=None, lowercase=False):
+def extract_crftokens(text, options=None, lowercase=True):
         t = TokenizerExtractor(recognize_linebreaks=True, create_structured_tokens=True)
         return t.extract(text, lowercase)
 
