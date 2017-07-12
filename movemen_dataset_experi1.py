@@ -37,7 +37,7 @@ total_data_f = open("/home/ubuntu/dig_indicator/data/movement_data/movement_expe
 
 lst = []
 k = 0
-for i in range(30000):
+for i in range(1000):
     neg_lines = open('/home/ubuntu/dig_indicator/data/movement_data/movement_neg.txt').read().splitlines()
     myline = random.choice(neg_lines)
     if myline not in lst:
@@ -46,7 +46,7 @@ for i in range(30000):
         lst.append(myline)
         print "k:",k
         print "i:",i
-        if k ==23000:
+        if k ==700:
             break
 
 random.shuffle(dataset)
