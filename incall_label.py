@@ -2,7 +2,7 @@ import sys
 import process_functions as pf
 import spacy
 import incall_extractor
-'''
+
 input_file = sys.argv[1]
 positive_text = sys.argv[2]
 negative_text = sys.argv[3]
@@ -52,8 +52,8 @@ sn_p_f.close()
 p_n_f.close()
 ne_f.close()
 
-'''
 
+'''
 input_file = sys.argv[1]
 sp_sn_f = open(sys.argv[2], 'w')
 test_140 = open(sys.argv[3], 'w')
@@ -89,3 +89,4 @@ with open(input_file, 'r') as f:
             
 sp_sn_f.close()
 test_140.close()
+'''
