@@ -1,5 +1,5 @@
 from spacy.matcher import Matcher
-from spacy.attrs import LEMMA, IS_ASCII, IS_DIGIT, TAG, DEP, ENT_TYPE, FLAG23, FLAG24, FLAG25, FLAG26, FLAG27
+from spacy.attrs import LEMMA, IS_ASCII, IS_DIGIT, TAG, DEP, ENT_TYPE, FLAG23, FLAG24, FLAG25, FLAG26, FLAG27, LOWER
 
 def add_to_vocab(nlp, lst):
     for lexeme in lst:
@@ -65,9 +65,9 @@ def load_incall_matcher(nlp):
     matcher.add_pattern(3, [{LEMMA: "is"}, {LEMMA: "place"}])
 
     matcher.add_entity(4)
-    matcher.add_pattern(4, [{LEMMA: "house"}, {LEMMA: "wives"}])
-    matcher.add_pattern(4, [{LEMMA: "your", DEP: "poss"}, {is_location: True}])
-    matcher.add_pattern(4, [{LEMMA: "your", DEP: "poss"}, {IS_ASCII: True}, {is_location: True}])
+    matcher.add_pattern(4, [{LEMMA: "house"}, {LEMMA: "wife"}])
+    matcher.add_pattern(4, [{LOWER: "your", DEP: "poss"}, {is_location: True}])
+    matcher.add_pattern(4, [{LOWER: "your", DEP: "poss"}, {IS_ASCII: True}, {is_location: True}])
     matcher.add_pattern(4, [{LEMMA: "no"}, {LEMMA: "incall"}])
     matcher.add_pattern(4, [{LEMMA: "no"}, {LEMMA: "in"}, {LEMMA: "call"}])
     matcher.add_pattern(4, [{LEMMA: "no"}, {LEMMA: "in"}, {is_hyphen: True}, {LEMMA: "call"}])
