@@ -33,11 +33,11 @@ def load_incall_matcher(nlp):
             lexeme.set_flag(is_hyphen, True)
         if lexeme.lower == ampersand_id:
             lexeme.set_flag(is_ampersand, True)
-        if lexeme.lemma in location_ids:
+        if lexeme.lower in location_ids:
             lexeme.set_flag(is_location, True)
-        if lexeme.lemma in private_ids:
+        if lexeme.lower in private_ids:
             lexeme.set_flag(is_private, True)
-        if lexeme.lemma in clean_ids:
+        if lexeme.lower in clean_ids:
             lexeme.set_flag(is_clean, True)
 
     matcher.add_entity(1)

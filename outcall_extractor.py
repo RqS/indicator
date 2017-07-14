@@ -25,7 +25,7 @@ def load_outcall_matcher(nlp):
             lexeme.set_flag(is_hyphen, True)
         if lexeme.lower == ampersand_id:
             lexeme.set_flag(is_ampersand, True)
-        if lexeme.lemma in location_ids:
+        if lexeme.lower in location_ids:
             lexeme.set_flag(is_location, True)
 
     matcher.add_entity(1)

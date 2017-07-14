@@ -19,9 +19,9 @@ def load_movement_matcher(nlp):
     upper_start = FLAG20
 
     for lexeme in nlp.vocab:
-        if lexeme.lemma_ in place:
+        if lexeme.lower_ in place:
             lexeme.set_flag(is_place, True)
-        if lexeme.lemma_ in girl:
+        if lexeme.lower_ in girl:
             lexeme.set_flag(is_girl, True)
         if lexeme.prefix_.isupper():
             lexeme.set_flag(upper_start, True)
