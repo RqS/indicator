@@ -20,6 +20,13 @@ p_n_f = open(sys.argv[7], 'w')
 ne_f = open(sys.argv[8], 'w')
 lower_lst = []
 
+ne_lst = []
+p_lst = []
+n_lst = []
+sp_sn_lst = []
+sp_n_lst = []
+sn_p_lst = []
+p_n_lst = []
 with open(input_file, 'r') as f:
     for index, sentence in enumerate(f):
         if sentence.lower() not in lower_lst:

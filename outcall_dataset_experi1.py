@@ -48,7 +48,7 @@ for i in range(300000):
         lst.append(myline)
         print "k:",k
         print "i:",i
-        if k ==100:
+        if k ==23000:
             break
 
 random.shuffle(dataset)

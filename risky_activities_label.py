@@ -44,7 +44,30 @@ with open(input_file, 'r') as f:
                 sn_p_f.write(sentence)
             elif label == "ONLY_P_N":
                 p_n_f.write(sentence)
-
+'''
+with open(input_file, 'r') as f:
+    for index, sentence in enumerate(f):
+        if index % 10000 == 0:
+            print "process line no.%d" %index
+        t = pf.extract_crftokens(sentence.decode("utf-8"))
+        t_simple_tokens = pf.extract_tokens_from_crf(t)
+        risky_activities = risky_activities_extractor.extract(nlp(t_simple_tokens), risky_activities_matcher)
+        label = pf.process_extracted(risky_activities)
+        if label == "NE":
+            ne_f.write(sentence)
+        elif label == "ONLY_P":
+            positive_f.write(sentence)
+        elif label == "ONLY_N":
+            negative_f.write(sentence)
+        elif label == "SP_SN":
+            sp_sn_f.write(sentence)
+        elif label == "SP_N":
+            sp_n_f.write(sentence)
+        elif label == "SN_P":
+            sn_p_f.write(sentence)
+        elif label == "ONLY_P_N":
+            p_n_f.write(sentence)
+'''
 positive_f.close()
 negative_f.close()
 sp_sn_f.close()
