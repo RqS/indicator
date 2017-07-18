@@ -19,30 +19,39 @@ sp_n_f = open(sys.argv[5], 'w')
 sn_p_f = open(sys.argv[6], 'w')
 p_n_f = open(sys.argv[7], 'w')
 ne_f = open(sys.argv[8], 'w')
+lower_lst = []
 
+ne_lst = []
+p_lst = []
+n_lst = []
+sp_sn_lst = []
+sp_n_lst = []
+sn_p_lst = []
+p_n_lst = []
 with open(input_file, 'r') as f:
     for index, sentence in enumerate(f):
-        if index % 10000 == 0:
-            print "process line no.%d" %index
-        t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
-        t_simple_tokens = pf.extract_tokens_from_crf(t)
-        outcall = outcall_extractor.extract(nlp(t_simple_tokens), outcall_matcher)
-        #incall = incall_extractor.extract(nlp(t_simple_tokens), incall_matcher)
-        label = pf.process_extracted(outcall)
-        if label == "NE":
-            ne_f.write(sentence)
-        elif label == "ONLY_P":
-            positive_f.write(sentence)
-        elif label == "ONLY_N":
-            negative_f.write(sentence)
-        elif label == "SP_SN":
-            sp_sn_f.write(sentence)
-        elif label == "SP_N":
-            sp_n_f.write(sentence)
-        elif label == "SN_P":
-            sn_p_f.write(sentence)
-        elif label == "ONLY_P_N":
-            p_n_f.write(sentence)
+        if sentence.lower() not in lower_lst:
+            lower_lst.append(sentence.lower())
+            if index % 10000 == 0:
+                print "process line no.%d" %index
+            t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
+            t_simple_tokens = pf.extract_tokens_from_crf(t)
+            outcall = outcall_extractor.extract(nlp(t_simple_tokens), outcall_matcher)
+            label = pf.process_extracted(outcall)
+            if label == "NE":
+                ne_f.write(sentence.lower())
+            elif label == "ONLY_P":
+                positive_f.write(sentence.lower())
+            elif label == "ONLY_N":
+                negative_f.write(sentence.lower())
+            elif label == "SP_SN":
+                sp_sn_f.write(sentence.lower())
+            elif label == "SP_N":
+                sp_n_f.write(sentence.lower())
+            elif label == "SN_P":
+                sn_p_f.write(sentence.lower())
+            elif label == "ONLY_P_N":
+                p_n_f.write(sentence.lower())
 
 positive_f.close()
 negative_f.close()
