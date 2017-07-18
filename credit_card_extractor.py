@@ -1,10 +1,6 @@
 from spacy.matcher import Matcher
 from spacy.attrs import LOWER, IS_ASCII, DEP, FLAG40, FLAG41, ORTH, LEMMA
 
-def add_to_vocab(nlp, lst):
-    for lexeme in lst:
-        nlp.vocab[lexeme.LEMMA().decode('utf8')]
-
 def set_flag(nlp, token_l, flag):
     # for t in token_l:
         # elst = map(''.join, itertools.product(*((c.upper(), c.LEMMA()) for c in t)))
