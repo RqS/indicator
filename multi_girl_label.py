@@ -23,7 +23,7 @@ with open(input_file, 'r') as f:
     for index, sentence in enumerate(f):
         if index % 10000 == 0:
             print "process line no.%d" %index
-        t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=False)
+        t = pf.extract_crftokens(sentence.decode("utf-8"), lowercase=True)
         t_simple_tokens = pf.extract_tokens_from_crf(t)
         multi_girl = multi_girl_extractor.extract(nlp(t_simple_tokens), multi_girl_matcher)
         label = pf.process_extracted(multi_girl)
